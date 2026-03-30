@@ -97,50 +97,6 @@ npm install
 # CLOUDINARY_API_SECRET="your_api_secret"
 # STRIPE_KEY="your_stripe_key"
 
-# Run backend
-npm run dev
-\`\`\`
-
-### Frontend
-\`\`\`bash
-cd ../frontend
-npm install
-npm run dev
-\`\`\`
-
----
-
-## 🏗️ Project Structure
-
-### Backend
-\`\`\`
-/controller    # API controllers (auth, cart, product, order, category)
-/middlewares   # Auth, authorization, error handling
-/routes        # Express routes
-/models        # Mongoose models
-/utils         # Utility functions (cloudinary, stripe, etc.)
-server.js      # Entry point
-\`\`\`
-
-### Frontend
-\`\`\`
-/src/components    # UI components (Products, Cart, Orders, Navbar)
-/src/pages         # Pages (Home, Product, Cart, Checkout)
-/src/api           # Axios API calls
-/src/hooks         # Custom React hooks
-/src/store         # Zustand store
-/src/styles        # SCSS styles
-/src/main.jsx      # Entry point
-\`\`\`
-
----
-
-## 💡 Notes
-- Protected routes require **JWT token** in `Authorization` header.  
-- Admin routes require role `"admin"`.  
-- Cloudinary is used for image uploads.  
-- Stripe is used for secure payment checkout.  
-
 ---
 
 ## 🎨 Badges
