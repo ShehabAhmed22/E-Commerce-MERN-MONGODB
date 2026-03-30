@@ -1,0 +1,173 @@
+/* ─────────────────────────────────────────
+   DeleteProduct  –  .dp-* namespace
+───────────────────────────────────────── */
+
+/* ── Icon trigger ── */
+.dp-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #ef4444;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+  flex-shrink: 0;
+}
+.dp-icon-btn:hover {
+  background: #fef2f2;
+}
+.dp-icon-btn:active {
+  transform: scale(0.9);
+}
+
+/* ── Modal body ── */
+.dp-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding-top: 0.25rem;
+}
+
+/* ── Warning circle ── */
+.dp-icon-wrap {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  background: #fef2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.06);
+}
+.dp-warning-icon {
+  color: #ef4444;
+}
+
+/* ── Text ── */
+.dp-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.dp-text__title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+.dp-text__sub {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Actions ── */
+.dp-actions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  padding-top: 0.25rem;
+}
+
+/* ── Buttons ── */
+.dp-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
+  font-family: inherit;
+}
+.dp-btn:active {
+  transform: scale(0.97);
+}
+.dp-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dp-btn--danger {
+  background: #ef4444;
+  color: #ffffff;
+}
+.dp-btn--danger:hover:not(:disabled) {
+  background: #dc2626;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+}
+
+.dp-btn--secondary {
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #e5e7eb;
+}
+.dp-btn--secondary:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* ── Spinner ── */
+.dp-spinner {
+  animation: dp-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes dp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .dp-icon-btn:hover {
+    background: rgba(239, 68, 68, 0.15);
+  }
+  .dp-icon-wrap {
+    background: rgba(239, 68, 68, 0.1);
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.04);
+  }
+  .dp-text__title {
+    color: #f9fafb;
+  }
+  .dp-text__sub {
+    color: #9ca3af;
+  }
+  .dp-btn--secondary {
+    border-color: #374151;
+    color: #9ca3af;
+  }
+  .dp-btn--secondary:hover {
+    background: #1f2937;
+    border-color: #4b5563;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 400px) {
+  .dp-actions {
+    flex-direction: column-reverse;
+  }
+  .dp-btn {
+    width: 100%;
+  }
+}

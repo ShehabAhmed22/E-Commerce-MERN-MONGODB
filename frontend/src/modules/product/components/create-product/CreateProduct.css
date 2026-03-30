@@ -1,0 +1,342 @@
+/* ─────────────────────────────────────────
+   CreateProduct  –  .cp-* namespace
+───────────────────────────────────────── */
+
+/* ── Trigger Button ── */
+.cp-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.125rem;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(79, 70, 229, 0.4);
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
+  white-space: nowrap;
+}
+.cp-trigger-btn:hover {
+  background: #4338ca;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.45);
+}
+.cp-trigger-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Form ── */
+.cp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Grid: 2 cols on ≥560 px ── */
+.cp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 560px) {
+  .cp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Field ── */
+.cp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.cp-field--full {
+  grid-column: 1 / -1;
+}
+
+/* ── Label ── */
+.cp-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.cp-label-hint {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+/* ── Base Input ── */
+.cp-input {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    background 0.15s;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.cp-input::placeholder {
+  color: #9ca3af;
+}
+.cp-input:hover:not(:focus):not(.cp-input--error) {
+  border-color: #d1d5db;
+}
+.cp-input:focus {
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+.cp-input--error {
+  border-color: #f87171 !important;
+  background: #fffafa;
+}
+.cp-input--error:focus {
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.12);
+}
+
+/* ── Price prefix ── */
+.cp-input-prefix-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cp-input-prefix {
+  position: absolute;
+  left: 1rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  pointer-events: none;
+  user-select: none;
+}
+.cp-input--prefix {
+  padding-left: 1.75rem;
+}
+
+/* ── Select ── */
+.cp-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cp-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 2.25rem;
+}
+.cp-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.cp-select-icon {
+  position: absolute;
+  right: 0.875rem;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* ── Textarea ── */
+.cp-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ── Error message ── */
+.cp-error {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ── Image Upload ── */
+.cp-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10rem;
+  border: 2px dashed #e5e7eb;
+  border-radius: 0.875rem;
+  background: #f9fafb;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.cp-upload:hover {
+  border-color: #6366f1;
+  background: #f5f3ff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.07);
+}
+.cp-upload--error {
+  border-color: #f87171;
+  background: #fffafa;
+}
+
+.cp-upload__preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+.cp-upload__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: #9ca3af;
+  font-size: 0.8125rem;
+}
+.cp-upload__hint {
+  font-size: 0.7rem;
+  color: #c4c9d4;
+}
+.cp-upload__input {
+  display: none;
+}
+
+/* ── Actions ── */
+.cp-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+/* ── Buttons ── */
+.cp-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
+  font-family: inherit;
+}
+.cp-btn:active {
+  transform: scale(0.97);
+}
+.cp-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cp-btn--primary {
+  background: #4f46e5;
+  color: #fff;
+}
+.cp-btn--primary:hover {
+  background: #4338ca;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.cp-btn--secondary {
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #e5e7eb;
+}
+.cp-btn--secondary:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* ── Spinner ── */
+.cp-spinner {
+  animation: cp-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes cp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .cp-label {
+    color: #d1d5db;
+  }
+  .cp-input {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  .cp-input:hover:not(:focus):not(.cp-input--error) {
+    border-color: #4b5563;
+  }
+  .cp-input:focus {
+    background: #111827;
+    border-color: #6366f1;
+  }
+  .cp-input--error {
+    background: #1c1010;
+  }
+  .cp-input::placeholder {
+    color: #4b5563;
+  }
+  .cp-upload {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  .cp-upload:hover {
+    background: #1e1b4b;
+    border-color: #6366f1;
+  }
+  .cp-upload--error {
+    background: #1c1010;
+    border-color: #f87171;
+  }
+  .cp-btn--secondary {
+    border-color: #374151;
+    color: #9ca3af;
+  }
+  .cp-btn--secondary:hover {
+    background: #1f2937;
+    border-color: #4b5563;
+  }
+}
+
+/* ── Responsive tweaks ── */
+@media (max-width: 400px) {
+  .cp-trigger-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .cp-actions {
+    flex-direction: column-reverse;
+  }
+  .cp-btn {
+    width: 100%;
+  }
+}

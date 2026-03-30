@@ -1,0 +1,224 @@
+/* ─────────────────────────────────────────
+   UpdateOrder  –  .uo-* namespace
+───────────────────────────────────────── */
+
+.uo-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #6366f1;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+  flex-shrink: 0;
+}
+.uo-icon-btn:hover {
+  background: #eef2ff;
+}
+.uo-icon-btn:active {
+  transform: scale(0.9);
+}
+
+.uo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Info card */
+.uo-info {
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+  border-radius: 0.875rem;
+  padding: 0.875rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.uo-info__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.uo-info__label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+.uo-info__value {
+  font-size: 0.8125rem;
+  color: #374151;
+  text-align: right;
+}
+.uo-info__value--mono {
+  font-family: monospace;
+  font-size: 0.75rem;
+  word-break: break-all;
+}
+.uo-info__value--bold {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Field */
+.uo-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.uo-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Input */
+.uo-input {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.uo-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background: #fff;
+}
+.uo-input--error {
+  border-color: #f87171;
+}
+
+.uo-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.uo-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 2.25rem;
+}
+.uo-select-icon {
+  position: absolute;
+  right: 0.875rem;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.uo-error {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin: 0;
+}
+
+/* Actions */
+.uo-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.uo-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+  font-family: inherit;
+}
+.uo-btn:active {
+  transform: scale(0.97);
+}
+.uo-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.uo-btn--primary {
+  background: #4f46e5;
+  color: #fff;
+}
+.uo-btn--primary:hover {
+  background: #4338ca;
+}
+
+.uo-btn--secondary {
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #e5e7eb;
+}
+.uo-btn--secondary:hover {
+  background: #f9fafb;
+}
+
+.uo-spin {
+  animation: uo-spin-anim 0.65s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes uo-spin-anim {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .uo-icon-btn:hover {
+    background: rgba(99, 102, 241, 0.15);
+  }
+  .uo-info {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  .uo-info__value {
+    color: #d1d5db;
+  }
+  .uo-info__value--bold {
+    color: #f9fafb;
+  }
+  .uo-label {
+    color: #d1d5db;
+  }
+  .uo-input {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  .uo-input:focus {
+    background: #111827;
+    border-color: #6366f1;
+  }
+  .uo-btn--secondary {
+    border-color: #374151;
+    color: #9ca3af;
+  }
+  .uo-btn--secondary:hover {
+    background: #1f2937;
+  }
+}

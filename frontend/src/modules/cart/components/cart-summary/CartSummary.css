@@ -1,0 +1,554 @@
+/* ─────────────────────────────────────────
+   CartSummary  –  .cs-* namespace
+───────────────────────────────────────── */
+
+.cs-wrap {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ── Title ── */
+.cs-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+/* ── Lines ── */
+.cs-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.cs-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.cs-line__label {
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.cs-line__count {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+.cs-line__value {
+  color: #111827;
+  font-weight: 500;
+}
+.cs-line__value--free {
+  color: #059669;
+  font-weight: 500;
+}
+.cs-line__value--discount {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* ── Discount line ── */
+.cs-line--discount .cs-line__label {
+  gap: 0.5rem;
+}
+
+.cs-coupon-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem 0.15rem 0.375rem;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  border-radius: 0.375rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #d97706;
+}
+.cs-coupon-tag__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: #d97706;
+  cursor: pointer;
+  transition: background 0.15s;
+  padding: 0;
+}
+.cs-coupon-tag__remove:hover {
+  background: #fde68a;
+}
+
+/* ── Divider ── */
+.cs-divider {
+  height: 1px;
+  background: #f3f4f6;
+  margin: 0.25rem 0;
+}
+
+/* ── Total ── */
+.cs-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cs-total__label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+.cs-total__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+/* ── Coupon section ── */
+.cs-coupon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cs-coupon__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #4f46e5;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cs-coupon__toggle:hover {
+  color: #4338ca;
+}
+.cs-coupon__toggle:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.cs-coupon__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ── checkout form gets a subtle bg + border to set it apart ── */
+.cs-checkout-form {
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 0.625rem;
+}
+
+.cs-coupon__input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cs-coupon__icon {
+  position: absolute;
+  left: 0.75rem;
+  color: #9ca3af;
+  pointer-events: none;
+}
+.cs-coupon__input {
+  width: 100%;
+  padding: 0.575rem 0.875rem 0.575rem 2.25rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.cs-coupon__input::placeholder {
+  text-transform: none;
+  letter-spacing: normal;
+}
+.cs-coupon__input:focus {
+  border-color: #6366f1;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+.cs-coupon__input--error {
+  border-color: #f87171;
+}
+.cs-coupon__error {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin: 0;
+}
+
+/* ── Plain field (no left icon padding) ── */
+.cs-field {
+  padding-left: 0.875rem !important;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* ── Side-by-side field row (city + country) ── */
+.cs-field-row {
+  display: flex;
+  gap: 0.5rem;
+}
+.cs-field-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.cs-coupon__btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cs-coupon__applied {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  color: #15803d;
+}
+.cs-coupon__applied-icon {
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+/* ── Checkout coupon notice ── */
+.cs-checkout-coupon-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #d97706;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* ── Buttons ── */
+.cs-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+  font-family: inherit;
+}
+.cs-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cs-btn--ghost {
+  background: transparent;
+  border: 1.5px solid #e5e7eb;
+  color: #6b7280;
+}
+.cs-btn--ghost:hover {
+  background: #f9fafb;
+}
+
+.cs-btn--outline {
+  background: transparent;
+  border: 1.5px solid #6366f1;
+  color: #4f46e5;
+}
+.cs-btn--outline:hover {
+  background: #eef2ff;
+}
+
+/* ── Checkout button ── */
+.cs-checkout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem 1.25rem;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.875rem;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+  position: relative;
+}
+.cs-checkout-btn:hover:not(:disabled) {
+  background: #4338ca;
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.45);
+}
+.cs-checkout-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.cs-checkout-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* When nested inside the btns row it should flex-grow */
+.cs-checkout-btn--inline {
+  flex: 1;
+  width: auto;
+  font-size: 0.875rem;
+  padding: 0.6rem 1rem;
+}
+
+.cs-checkout-btn__arrow {
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+.cs-checkout-btn:hover:not(:disabled) .cs-checkout-btn__arrow {
+  transform: translateX(3px);
+}
+
+/* ── Secure label ── */
+.cs-secure {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Create order heading ── */
+.cs-create__heading-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.cs-create__heading-icon {
+  color: #4f46e5;
+}
+.cs-create__heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+.cs-create__sub {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ── Cart item cards in manual order ── */
+.cs-create__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cs-create__item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+}
+.cs-create__item-img {
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+}
+.cs-create__item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.cs-create__item-name {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cs-create__item-price {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+.cs-create__qty {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.cs-create__qty-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background: #fff;
+  cursor: pointer;
+  color: #374151;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+  padding: 0;
+}
+.cs-create__qty-btn:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+.cs-create__qty-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.cs-create__qty-val {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #111827;
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+/* ── Spin ── */
+.cs-spin {
+  animation: cs-spin-anim 0.65s linear infinite;
+}
+@keyframes cs-spin-anim {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .cs-wrap {
+    background: #111827;
+    border-color: #1f2937;
+  }
+  .cs-title {
+    color: #f9fafb;
+  }
+  .cs-line__label {
+    color: #9ca3af;
+  }
+  .cs-line__value {
+    color: #f9fafb;
+  }
+  .cs-divider {
+    background: #1f2937;
+  }
+  .cs-total__label,
+  .cs-total__value {
+    color: #f9fafb;
+  }
+  .cs-coupon__input {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  .cs-coupon__input:focus {
+    background: #111827;
+    border-color: #6366f1;
+  }
+  .cs-coupon__applied {
+    background: rgba(5, 150, 105, 0.1);
+    border-color: rgba(5, 150, 105, 0.25);
+    color: #34d399;
+  }
+  .cs-btn--ghost {
+    border-color: #374151;
+    color: #9ca3af;
+  }
+  .cs-btn--ghost:hover {
+    background: #1f2937;
+  }
+  .cs-secure {
+    color: #6b7280;
+  }
+  .cs-checkout-form {
+    background: #1a2232;
+    border-color: #2d3748;
+  }
+  .cs-create__item {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  .cs-create__item-name {
+    color: #f9fafb;
+  }
+  .cs-create__qty-btn {
+    background: #111827;
+    border-color: #374151;
+    color: #e5e7eb;
+  }
+  .cs-create__qty-btn:hover:not(:disabled) {
+    background: #1f2937;
+  }
+  .cs-create__qty-val {
+    color: #f9fafb;
+  }
+  .cs-create__heading {
+    color: #f9fafb;
+  }
+  .cs-checkout-coupon-notice {
+    background: rgba(217, 119, 6, 0.1);
+    border-color: rgba(217, 119, 6, 0.3);
+  }
+}

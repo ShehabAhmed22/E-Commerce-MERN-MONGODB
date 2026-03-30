@@ -1,0 +1,352 @@
+/* ─────────────────────────────────────────
+   CreateCoupon  –  .cc-* namespace
+───────────────────────────────────────── */
+
+/* ── Trigger ── */
+.cc-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.125rem;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(79, 70, 229, 0.4);
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
+  white-space: nowrap;
+}
+.cc-trigger-btn:hover {
+  background: #4338ca;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.45);
+}
+.cc-trigger-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Form ── */
+.cc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Grid ── */
+.cc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 500px) {
+  .cc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Field ── */
+.cc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.cc-field--full {
+  grid-column: 1 / -1;
+}
+
+/* ── Label ── */
+.cc-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* ── Input base ── */
+.cc-input {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    background 0.15s;
+}
+.cc-input::placeholder {
+  color: #9ca3af;
+}
+.cc-input:hover:not(:focus):not(.cc-input--error) {
+  border-color: #d1d5db;
+}
+.cc-input:focus {
+  border-color: #6366f1;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+.cc-input--error {
+  border-color: #f87171 !important;
+  background: #fffafa;
+}
+.cc-input--error:focus {
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.12);
+}
+
+/* ── Input with left icon ── */
+.cc-input-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cc-input-icon {
+  position: absolute;
+  left: 0.875rem;
+  color: #9ca3af;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+.cc-input--icon {
+  padding-left: 2.375rem;
+}
+
+/* ── Price prefix ── */
+.cc-input-prefix-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cc-input-prefix {
+  position: absolute;
+  left: 0.875rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  pointer-events: none;
+  user-select: none;
+}
+.cc-input--prefix {
+  padding-left: 1.875rem;
+}
+
+/* ── Select ── */
+.cc-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cc-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 2.25rem;
+}
+.cc-select-icon {
+  position: absolute;
+  right: 0.875rem;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* ── Error ── */
+.cc-error {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin: 0;
+}
+
+/* ── Toggle (isActive) ── */
+.cc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  width: 100%;
+  text-align: left;
+}
+.cc-toggle--on {
+  border-color: #a5b4fc;
+  background: #eef2ff;
+}
+.cc-toggle--off {
+  border-color: #e5e7eb;
+  background: #f9fafb;
+}
+
+.cc-toggle__track {
+  width: 2.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #d1d5db;
+  position: relative;
+  transition: background 0.2s;
+}
+.cc-toggle--on .cc-toggle__track {
+  background: #4f46e5;
+}
+
+.cc-toggle__thumb {
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+.cc-toggle--on .cc-toggle__thumb {
+  transform: translateX(1rem);
+}
+
+.cc-toggle__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+}
+.cc-toggle--on .cc-toggle__label {
+  color: #4338ca;
+}
+
+/* ── Actions ── */
+.cc-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.cc-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
+  font-family: inherit;
+}
+.cc-btn:active {
+  transform: scale(0.97);
+}
+.cc-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cc-btn--primary {
+  background: #4f46e5;
+  color: #fff;
+}
+.cc-btn--primary:hover {
+  background: #4338ca;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.cc-btn--secondary {
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #e5e7eb;
+}
+.cc-btn--secondary:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.cc-spinner {
+  animation: cc-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes cc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .cc-label {
+    color: #d1d5db;
+  }
+  .cc-input {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  .cc-input:hover:not(:focus):not(.cc-input--error) {
+    border-color: #4b5563;
+  }
+  .cc-input:focus {
+    background: #111827;
+    border-color: #6366f1;
+  }
+  .cc-input--error {
+    background: #1c1010;
+  }
+  .cc-input::placeholder {
+    color: #4b5563;
+  }
+  .cc-toggle {
+    border-color: #374151;
+  }
+  .cc-toggle--on {
+    border-color: #6366f1;
+    background: rgba(79, 70, 229, 0.15);
+  }
+  .cc-toggle--off {
+    background: #1f2937;
+  }
+  .cc-toggle__label {
+    color: #d1d5db;
+  }
+  .cc-toggle--on .cc-toggle__label {
+    color: #818cf8;
+  }
+  .cc-btn--secondary {
+    border-color: #374151;
+    color: #9ca3af;
+  }
+  .cc-btn--secondary:hover {
+    background: #1f2937;
+    border-color: #4b5563;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 400px) {
+  .cc-trigger-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .cc-actions {
+    flex-direction: column-reverse;
+  }
+  .cc-btn {
+    width: 100%;
+  }
+}
